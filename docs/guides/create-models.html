@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Create models · denoDB</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Models represent tables in your database. Each model should link to one of your database&#x27;s tables. Every field should also match the name from your database."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Create models · denoDB"/><meta property="og:type" content="website"/><meta property="og:url" content="https://eveningkid.github.io/denodb-docs/"/><meta property="og:description" content="Models represent tables in your database. Each model should link to one of your database&#x27;s tables. Every field should also match the name from your database."/><meta property="og:image" content="https://eveningkid.github.io/denodb-docs/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://eveningkid.github.io/denodb-docs/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/denodb-docs/img/logo.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"/><link rel="stylesheet" href="/denodb-docs/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/denodb-docs/js/code-block-buttons.js"></script><script src="/denodb-docs/js/scrollSpy.js"></script><link rel="stylesheet" href="/denodb-docs/css/main.css"/><script src="/denodb-docs/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/denodb-docs/"><img class="logo" src="/denodb-docs/img/logo.png" alt="denoDB"/><h2 class="headerTitleWithLogo">denoDB</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/denodb-docs/docs/getting-started" target="_self">Docs</a></li><li class=""><a href="https://github.com/eveningkid/denodb" target="_self">GitHub</a></li><li class=""><a href="https://github.com/eveningkid/denodb/issues" target="_self">Help</a></li><li class=""><a target="_self"></a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/getting-started">Getting started</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/connect-database">Connect to a database</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Clients</h4><ul><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/using-sqlite">Using SQLite</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/using-postgresql">Using PostgreSQL</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/using-mysql">Using MySQL</a></li></ul></div><li class="navListItem navListItemActive"><a class="navItem" href="/denodb-docs/docs/guides/create-models">Create models</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/synchronize-database">Synchronize database</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/query-models">Query models</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Relationships</h4><ul><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/foreign-key">Foreign key</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/one-to-one">One-to-one</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/one-to-many">One-to-many</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/guides/many-to-many">Many-to-many</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API Reference</h3><ul class=""><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Models</h4><ul><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/api/data-types">Data types</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/api/field-descriptors">Field descriptors</a></li><li class="navListItem"><a class="navItem" href="/denodb-docs/docs/api/model-methods">Model methods</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Create models</h1></header><article><div><span><p>Models represent tables in your database. Each model should link to one of your database's tables. Every field should also match the name from your database.</p>
+<blockquote>
+<p>If the model you are creating does not exist yet in your database, it will automatically created when calling <code>new Database(...).sync(...)</code>.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="create-models"></a><a href="#create-models" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create models</h2>
+<p>Creating models is very easy. Import <code>Model</code> from the library and create a class based on what you plan to modelize. Let's create a <code>Business</code> model (see the joke here? alright):</p>
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">import</span> { Model } <span class="hljs-keyword">from</span> <span class="hljs-string">'https://deno.land/x/denodb/mod.ts'</span>;
+
+<span class="hljs-keyword">class</span> Business <span class="hljs-keyword">extends</span> Model {}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="set-your-table-name"></a><a href="#set-your-table-name" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Set your table name</h2>
+<p>The name we call our model might differ from the table name in our database. It is usually good practice to use your model name in its plural form, e.g. <code>Business</code> and <code>Flight</code> would respectively become <code>businesses</code> and <code>flights</code>.</p>
+<p>To set the name for your table, we will use the static <code>table</code> property:</p>
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">class</span> Business <span class="hljs-keyword">extends</span> Model {
+  <span class="hljs-keyword">static</span> table = <span class="hljs-string">'businesses'</span>;
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="add-fields"></a><a href="#add-fields" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Add fields</h2>
+<p>In order to add fields, use the static <code>fields</code> property. All the available data types can be found in the <a href="/denodb-docs/docs/api/data-types">data types section</a>.</p>
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">import</span> { DataTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">'https://deno.land/x/denodb/mod.ts'</span>;
+
+<span class="hljs-keyword">class</span> Business <span class="hljs-keyword">extends</span> Model {
+  <span class="hljs-comment">// ...</span>
+
+  <span class="hljs-keyword">static</span> fields = {
+    id: DataTypes.INTEGER,
+    name: DataTypes.STRING,
+  };
+}
+</code></pre>
+<p>You can add as many fields as you want.</p>
+<h2><a class="anchor" aria-hidden="true" id="define-a-primary-key"></a><a href="#define-a-primary-key" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Define a primary key</h2>
+<p>So far, our fields are using regular types: integer and string. However, we often need to add more information for each of our fields e.g. the maximum length of a string field or in this case, set <code>id</code> to be our primary key.</p>
+<p>To do so, we need to replace the string returned by <code>DataTypes.INTEGER</code> with an object:</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Business</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>{
+  <span class="hljs-comment">// ...</span>
+
+  <span class="hljs-keyword">static</span> fields = {
+    <span class="hljs-attr">id</span>: {
+      <span class="hljs-attr">type</span>: DataTypes.INTEGER,
+      <span class="hljs-attr">primaryKey</span>: <span class="hljs-literal">true</span>,
+    },
+
+    <span class="hljs-comment">// If we need to set the length for `name`, we can also use</span>
+    <span class="hljs-comment">// an object</span>
+    <span class="hljs-attr">name</span>: {
+      <span class="hljs-attr">type</span>: DataTypes.STRING,
+      <span class="hljs-attr">length</span>: <span class="hljs-number">25</span>,
+    },
+  };
+}
+</code></pre>
+<p>You can learn more about <a href="/denodb-docs/docs/api/field-descriptors">field descriptors (such as <code>primaryKey</code> and <code>length</code>) in the according section</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="set-defaults"></a><a href="#set-defaults" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Set defaults</h2>
+<p>If you want one of your fields to have a default value, use the static <code>defaults</code> property to do so:</p>
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">class</span> Business <span class="hljs-keyword">extends</span> Model {
+  <span class="hljs-comment">// ...</span>
+
+  <span class="hljs-keyword">static</span> defaults = {
+    name: <span class="hljs-string">'Something About Us'</span>,
+  };
+}
+</code></pre>
+<p>This can be done for any of your predefined fields.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/denodb-docs/docs/guides/using-mysql"><span class="arrow-prev">← </span><span class="function-name-prevnext">Using MySQL</span></a><a class="docs-next button" href="/denodb-docs/docs/guides/synchronize-database"><span>Synchronize database</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#create-models">Create models</a></li><li><a href="#set-your-table-name">Set your table name</a></li><li><a href="#add-fields">Add fields</a></li><li><a href="#define-a-primary-key">Define a primary key</a></li><li><a href="#set-defaults">Set defaults</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div><h5>Docs</h5><a href="/denodb-docs/docs/en/getting-started">Getting Started</a><a href="/denodb-docs/docs/en/api/data-types">API Reference</a></div><div><h5>More</h5><a href="https://github.com/eveningkid/denodb">GitHub</a><a class="github-button" href="https://github.com/eveningkid/denodb" data-icon="octicon-star" data-count-href="/eveningkid/denodb/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
