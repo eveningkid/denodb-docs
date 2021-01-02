@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "examples": "docusaurus-examples",
+    "start": "docusaurus-start",
+    "build": "docusaurus-build",
+    "publish-gh-pages": "GIT_USER=eveningkid CURRENT_BRANCH=master USE_SSH=true docusaurus-publish",
+    "write-translations": "docusaurus-write-translations",
+    "publish": "npm run build && npm run publish-gh-pages",
+    "version": "docusaurus-version",
+    "rename-version": "docusaurus-rename-version"
+  },
+  "devDependencies": {
+    "docusaurus": "^1.14.4"
+  }
+}

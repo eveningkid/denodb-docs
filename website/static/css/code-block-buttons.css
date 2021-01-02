@@ -1,0 +1,41 @@
+/* "Copy" code block button */
+pre {
+  position: relative;
+}
+
+pre .btnIcon {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  z-index: 2;
+  cursor: pointer;
+  border: 0;
+  padding: 0 8px;
+  color: #fff;
+  background-color: black;
+  height: 25px;
+  border-radius: 4px;
+  transition: all 0.25s ease-out;
+}
+
+pre .btnIcon:hover {
+  text-decoration: none;
+}
+
+.btnIcon__body {
+  align-items: center;
+  display: flex;
+}
+
+.btnIcon svg {
+  fill: currentColor;
+  margin-right: 0.4em;
+}
+
+.btnIcon__label {
+  font-size: 11px;
+}
+
+.btnClipboard {
+  right: 10px;
+}
